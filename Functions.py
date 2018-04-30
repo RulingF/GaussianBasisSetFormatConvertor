@@ -3,410 +3,231 @@
 import os
 #Cfour output function
 def Cfour_output(Cfourbasis,f):
-	'''Give Cfour format output.
-
-Put Cfour basis set format into a file.'''
-	NumofAM=0
-	StrofAM=''
-	StrofContracted_AM=''
-	StrofComplete_AM=''
-	COE_PRECISION_CTRL=True
-	if Cfourbasis.LT_EXP_COE_S:
-		NumofAM+=1
-		AM='0'
-		AM=AM.rjust(5)
-		StrofAM+=AM
-		Num=len(Cfourbasis.LT_EXP_COE_S)
-		Num=str(Num)
-		Num=Num.rjust(5)
-		StrofComplete_AM+=Num
-                NumC=len(Cfourbasis.LT_COE_S[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-	if Cfourbasis.LT_EXP_COE_P:
-		NumofAM+=1
-                AM='1'
-                AM=AM.rjust(5)
-                StrofAM+=AM
-                Num=len(Cfourbasis.LT_EXP_COE_P)
-		Num=str(Num)
-                Num=Num.rjust(5)
-                StrofComplete_AM+=Num
-                NumC=len(Cfourbasis.LT_COE_P[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-        if Cfourbasis.LT_EXP_COE_D:
-                NumofAM+=1
-	        AM='2'
-                AM=AM.rjust(5)
-                StrofAM+=AM
-                Num=len(Cfourbasis.LT_EXP_COE_D)
-		Num=str(Num)
-                Num=Num.rjust(5)
-                StrofComplete_AM+=Num
-                NumC=len(Cfourbasis.LT_COE_D[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-        if Cfourbasis.LT_EXP_COE_F:
-                NumofAM+=1
-                AM='3'
-                AM=AM.rjust(5)
-                StrofAM+=AM
-                Num=len(Cfourbasis.LT_EXP_COE_F)
-		Num=str(Num)
-                Num=Num.rjust(5)
-                StrofComplete_AM+=Num
-                NumC=len(Cfourbasis.LT_COE_F[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-	if Cfourbasis.LT_EXP_COE_G:
-                NumofAM+=1
-                AM='4'
-                AM=AM.rjust(5)
-                StrofAM+=AM
-                Num=len(Cfourbasis.LT_EXP_COE_G)
-		Num=str(Num)
-                Num=Num.rjust(5)
-                StrofComplete_AM+=Num
-                NumC=len(Cfourbasis.LT_COE_G[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-        if Cfourbasis.LT_EXP_COE_H:
-                NumofAM+=1
-                AM='5'
-                AM=AM.rjust(5)
-                StrofAM+=AM
-                Num=len(Cfourbasis.LT_EXP_COE_H)
-                Num=str(Num)
-		Num=Num.rjust(5)
-                StrofComplete_AM+=Num
-                NumC=len(Cfourbasis.LT_COE_H[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-        if Cfourbasis.LT_EXP_COE_I:
-                NumofAM+=1
-                AM='6'
-                AM=AM.rjust(5)
-                StrofAM+=AM
-                Num=len(Cfourbasis.LT_EXP_COE_I)
-                Num=str(Num)
-		Num=Num.rjust(5)
-                StrofComplete_AM+=Num
-                NumC=len(Cfourbasis.LT_COE_I[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-        if Cfourbasis.LT_EXP_COE_K:
-                NumofAM+=1
-                AM='7'
-                AM=AM.rjust(5)
-                StrofAM+=AM
-                Num=len(Cfourbasis.LT_EXP_COE_K)
-                Num=str(Num)
-		Num=Num.rjust(5)
-                StrofComplete_AM+=Num
-                NumC=len(Cfourbasis.LT_COE_K[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-        if Cfourbasis.LT_EXP_COE_L:
-                NumofAM+=1
-                AM='8'
-                AM=AM.rjust(5)
-                StrofAM+=AM
-                Num=len(Cfourbasis.LT_EXP_COE_L)
-                Num=str(Num)
-		Num=Num.rjust(5)
-                StrofComplete_AM+=Num
-                NumC=len(Cfourbasis.LT_COE_L[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-        if Cfourbasis.LT_EXP_COE_M:
-                NumofAM+=1
-                AM='9'
-                AM=AM.rjust(5)
-                StrofAM+=AM
-                Num=len(Cfourbasis.LT_EXP_COE_M)
-                Num=str(Num)
-		Num=Num.rjust(5)
-                StrofComplete_AM+=Num
-                NumC=len(Cfourbasis.LT_COE_M[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-        if Cfourbasis.LT_EXP_COE_N:
-                NumofAM+=1
-                AM='10'
-                AM=AM.rjust(5)
-                StrofAM+=AM
-                Num=len(Cfourbasis.LT_EXP_COE_N)
-                Num=str(Num)
-		Num=Num.rjust(5)
-                StrofComplete_AM+=Num
-		NumC=len(Cfourbasis.LT_COE_N[0])
-                NumC=str(NumC)
-                NumC=NumC.rjust(5)
-                StrofContracted_AM+=NumC
-	f.write(Cfourbasis.element_name+':Define your basis name here\n')
-	f.write(Cfourbasis.element_name+':Please add your comment here\n')
-        f.write('\n')
-	NumofAM=str(NumofAM)
-	NumofAM=NumofAM.rjust(3)
-	f.write(NumofAM+'\n')
-	f.write(StrofAM+'\n')
-	f.write(StrofContracted_AM+'\n')
-	f.write(StrofComplete_AM+'\n')
-	COE_PRECISION_CTRL=Cfour_COE_SCAN(Cfourbasis)
-	#S
-	length=len(Cfourbasis.LT_EXP_S)
-	for i,item in enumerate(Cfourbasis.LT_EXP_S):
-                if i%5==0:
-                        f.write('\n')
-		f.write("%16.6f"%item)
-		if i+1==length:
-			f.write('\n')
-	f.write('\n')
-	if Cfourbasis.LT_COE_S:
-		if COE_PRECISION_CTRL==False:
-	        	for item in Cfourbasis.LT_COE_S:
-                        	for flag in item:
-                                	f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-		else:	
-			for item in Cfourbasis.LT_COE_S:
-				for flag in item:
-					f.write("%10.7f"%flag+' ')
-				f.write('\n')
-        #P
-        length=len(Cfourbasis.LT_EXP_P)
-        for i,item in enumerate(Cfourbasis.LT_EXP_P):
-                if i%5==0:
-                        f.write('\n')
-		f.write("%16.6f"%item)
-                if i+1==length:
-                        f.write('\n')
-        f.write('\n')
-	if Cfourbasis.LT_COE_P:
-		if COE_PRECISION_CTRL==False:
-                	for item in Cfourbasis.LT_COE_P:
-                        	for flag in item:
-                                	f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-        	else:
-        		for item in Cfourbasis.LT_COE_P:
-                		for flag in item:
-                			f.write("%10.7f"%flag+' ')
-                		f.write('\n')
-        #D
-        length=len(Cfourbasis.LT_EXP_D)
-        for i,item in enumerate(Cfourbasis.LT_EXP_D):
-                if i%5==0:
-                        f.write('\n')
+    '''
+    Give Cfour format output.
+    Put Cfour basis set format into a file.
+    '''
+    NumofAM=0
+    StrofAM=''
+    StrofContracted_AM=''
+    StrofComplete_AM=''
+    COE_PRECISION_CTRL=True
+    if Cfourbasis.LT_EXP_COE_S:
+        NumofAM+=1
+        AM='0'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_S)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_S[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    if Cfourbasis.LT_EXP_COE_P:
+        NumofAM+=1
+        AM='1'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_P)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_P[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    if Cfourbasis.LT_EXP_COE_D:
+        NumofAM+=1
+        AM='2'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_D)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_D[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    if Cfourbasis.LT_EXP_COE_F:
+        NumofAM+=1
+        AM='3'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_F)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_F[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    if Cfourbasis.LT_EXP_COE_G:
+        NumofAM+=1
+        AM='4'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_G)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_G[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    if Cfourbasis.LT_EXP_COE_H:
+        NumofAM+=1
+        AM='5'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_H)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_H[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    if Cfourbasis.LT_EXP_COE_I:
+        NumofAM+=1
+        AM='6'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_I)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_I[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    if Cfourbasis.LT_EXP_COE_K:
+        NumofAM+=1
+        AM='7'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_K)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_K[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    if Cfourbasis.LT_EXP_COE_L:
+        NumofAM+=1
+        AM='8'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_L)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_L[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    if Cfourbasis.LT_EXP_COE_M:
+        NumofAM+=1
+        AM='9'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_M)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_M[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    if Cfourbasis.LT_EXP_COE_N:
+        NumofAM+=1
+        AM='10'
+        AM=AM.rjust(5)
+        StrofAM+=AM
+        Num=len(Cfourbasis.LT_EXP_COE_N)
+        Num=str(Num)
+        Num=Num.rjust(5)
+        StrofComplete_AM+=Num
+        NumC=len(Cfourbasis.LT_COE_N[0])
+        NumC=str(NumC)
+        NumC=NumC.rjust(5)
+        StrofContracted_AM+=NumC
+    f.write(Cfourbasis.element_name+':Define your basis name here\n')
+    f.write(Cfourbasis.element_name+':Please add your comment here\n')
+    f.write('\n')
+    NumofAM=str(NumofAM)
+    NumofAM=NumofAM.rjust(3)
+    f.write(NumofAM+'\n')
+    f.write(StrofAM+'\n')
+    f.write(StrofContracted_AM+'\n')
+    f.write(StrofComplete_AM+'\n')
+    COE_PRECISION_CTRL=Cfour_COE_SCAN(Cfourbasis)
+    for LT_EXP_AG,LT_COE_AG in zip(Cfourbasis.LT_EXP_LT,Cfourbasis.LT_COE_LT):
+        length = len(LT_EXP_AG)
+        for i,item in enumerate(LT_EXP_AG):
+            if i % 5 == 0:
+                f.write('\n')
                 f.write("%16.6f"%item)
-                if i+1==length:
-                        f.write('\n')
+            if i + 1 == length:
+                f.write('\n')
         f.write('\n')
-	if Cfourbasis.LT_COE_D:
-                if COE_PRECISION_CTRL==False:
-                	for item in Cfourbasis.LT_COE_D:
-                        	for flag in item:
-                                	f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-        	else:
-        		for item in Cfourbasis.LT_COE_D:
-                		for flag in item:
-                			f.write("%10.7f"%flag+' ')
-               	 		f.write('\n')
-        #F
-        length=len(Cfourbasis.LT_EXP_F)
-        for i,item in enumerate(Cfourbasis.LT_EXP_F):
-                if i%5==0:
-                        f.write('\n')
-                f.write("%16.6f"%item)
-                if i+1==length:
-                        f.write('\n')
-        f.write('\n')
-	if Cfourbasis.LT_COE_F:
-                if COE_PRECISION_CTRL==False:
-                	for item in Cfourbasis.LT_COE_F:
-                        	for flag in item:
-                                	f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-        	else:
-        		for item in Cfourbasis.LT_COE_F:
-                		for flag in item:
-                			f.write("%10.7f"%flag+' ')
-                		f.write('\n')
-        #G
-        length=len(Cfourbasis.LT_EXP_G)
-        for i,item in enumerate(Cfourbasis.LT_EXP_G):
-                if i%5==0:
-                        f.write('\n')
-                f.write("%16.6f"%item)
-                if i+1==length:
-                        f.write('\n')
-        f.write('\n')
-	if Cfourbasis.LT_COE_G:
-                if COE_PRECISION_CTRL==False:
-                	for item in Cfourbasis.LT_COE_G:
-                        	for flag in item:
-                                	f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-        	else:
-        		for item in Cfourbasis.LT_COE_G:
-                		for flag in item:
-                			f.write("%10.7f"%flag+' ')
-                		f.write('\n')
-        #H
-        length=len(Cfourbasis.LT_EXP_H)
-        for i,item in enumerate(Cfourbasis.LT_EXP_H):
-                if i%5==0:
-                        f.write('\n')
-                f.write("%16.6f"%item)
-                if i+1==length:
-                        f.write('\n')
-        f.write('\n')
-	if Cfourbasis.LT_COE_H:
-                if COE_PRECISION_CTRL==False:
-                	for item in Cfourbasis.LT_COE_H:
-                        	for flag in item:
-                                	f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-        	else:
-        		for item in Cfourbasis.LT_COE_H:
-                		for flag in item:
-                			f.write("%10.7f"%flag+' ')
-                		f.write('\n')
-        #I
-        length=len(Cfourbasis.LT_EXP_I)
-        for i,item in enumerate(Cfourbasis.LT_EXP_I):
-                if i%5==0:
-                        f.write('\n')
-                f.write("%16.6f"%item)
-                if i+1==length:
-                        f.write('\n')
-        f.write('\n')
-	if Cfourbasis.LT_COE_I:
-                if COE_PRECISION_CTRL==False:
-                	for item in Cfourbasis.LT_COE_I:
-                        	for flag in item:
-                        	        f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-        	else:
-        		for item in Cfourbasis.LT_COE_I:
-                		for flag in item:
-                			f.write("%10.7f"%flag+' ')
-                		f.write('\n')
-        #K
-        length=len(Cfourbasis.LT_EXP_K)
-        for i,item in enumerate(Cfourbasis.LT_EXP_K):
-                if i%5==0:
-                        f.write('\n')
-                f.write("%16.6f"%item)
-                if i+1==length:
-                        f.write('\n')
-        f.write('\n')
-	if Cfourbasis.LT_COE_K:
-                if COE_PRECISION_CTRL==False:
-                	for item in Cfourbasis.LT_COE_K:
-                        	for flag in item:
-                        	        f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-        	else:
-        		for item in Cfourbasis.LT_COE_K:
-                		for flag in item:
-                			f.write("%10.7f"%flag+' ')
-                		f.write('\n')
-        #L
-        length=len(Cfourbasis.LT_EXP_L)
-        for i,item in enumerate(Cfourbasis.LT_EXP_L):
-                if i%5==0:
-                        f.write('\n')
-                f.write("%16.6f"%item)
-                if i+1==length:
-                        f.write('\n')
-        f.write('\n')
-	if Cfourbasis.LT_COE_L:
-                if COE_PRECISION_CTRL==False:
-                	for item in Cfourbasis.LT_COE_L:
-                        	for flag in item:
-                                	f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-        	else:
-        		for item in Cfourbasis.LT_COE_L:
-                		for flag in item:
-                			f.write("%10.7f"%flag+' ')
-                		f.write('\n')
-        #M
-        length=len(Cfourbasis.LT_EXP_M)
-        for i,item in enumerate(Cfourbasis.LT_EXP_M):
-                if i%5==0:
-                        f.write('\n')
-                f.write("%16.6f"%item)
-                if i+1==length:
-                        f.write('\n')
-        f.write('\n')
-	if Cfourbasis.LT_COE_M:
-                if COE_PRECISION_CTRL==False:
-                	for item in Cfourbasis.LT_COE_M:
-                        	for flag in item:
-                                	f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-        	else:
-        		for item in Cfourbasis.LT_COE_M:
-                		for flag in item:
-                			f.write("%10.7f"%flag+' ')
-                		f.write('\n')
-        #N
-        length=len(Cfourbasis.LT_EXP_N)
-        for i,item in enumerate(Cfourbasis.LT_EXP_N):
-                if i%5==0:
-                        f.write('\n')
-                f.write("%16.6f"%item)
-                if i+1==length:
-                        f.write('\n')
-        f.write('\n')
-	if Cfourbasis.LT_COE_N:
-                if COE_PRECISION_CTRL==False:
-                	for item in Cfourbasis.LT_COE_N:
-                        	for flag in item:
-                                	f.write("%13.6E"%flag+'     ')
-                        	f.write('\n')
-        	else:
-        		for item in Cfourbasis.LT_COE_N:
-                		for flag in item:
-                			f.write("%10.7f"%flag+' ')
-                		f.write('\n')
-		#Pseodopotential output
+        if LT_COE_AG:
+            if COE_PRECISION_CTRL == False: 
+                for item in LT_COE_AG:
+                    for flag in item:
+                        f.write("%13.6E"%flag+'     ')
+                    f.write('\n')
+            else:
+                for item in LT_COE_AG:
+                    for flag in item:
+                        f.write("%10.7f"%flag+' ')
+                    f.write('\n')
+    #S
+    #length=len(Cfourbasis.LT_EXP_S)
+    #for i,item in enumerate(Cfourbasis.LT_EXP_S):
+    #    if i%5==0:
+    #        f.write('\n')
+    #        f.write("%16.6f"%item)
+    #    if i+1==length:
+    #        f.write('\n')
+    #f.write('\n')
+    #if Cfourbasis.LT_COE_S:
+    #    if COE_PRECISION_CTRL==False:
+    #        for item in Cfourbasis.LT_COE_S:
+    #            for flag in item:
+    #                f.write("%13.6E"%flag+'     ')
+    #            f.write('\n')
+    #    else:    
+    #        for item in Cfourbasis.LT_COE_S:
+    #            for flag in item:
+    #                f.write("%10.7f"%flag+' ')
+    #            f.write('\n')
+    #Pseodopotential output
 
 #Dirac output function
 def Dirac_output(Dbasis,f):
-	StrofAM=[]
-	COE_PRECISION_CTRL=True
-	f.write('a %s'%Dbasis.Z+'\n')
-	f.write('$ Add your description here\n')
-	f.write('$ Add your description here\n')
-	COE_PRECISION_CTRL=Dirac_COE_SCAN(Dbasis)
-	#print "HERE:"
-	#print Dirac_COE_SCAN(Dbasis)
-	Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_S,Dbasis.LT_EXP_S,Dbasis.LT_COE_S,'S')
-        Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_P,Dbasis.LT_EXP_P,Dbasis.LT_COE_P,'P')
-        Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_D,Dbasis.LT_EXP_D,Dbasis.LT_COE_D,'D')
-        Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_F,Dbasis.LT_EXP_F,Dbasis.LT_COE_F,'F')
-        Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_G,Dbasis.LT_EXP_G,Dbasis.LT_COE_G,'G')
-        Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_H,Dbasis.LT_EXP_H,Dbasis.LT_COE_H,'H')
-        Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_I,Dbasis.LT_EXP_I,Dbasis.LT_COE_I,'I')
-        Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_K,Dbasis.LT_EXP_K,Dbasis.LT_COE_K,'K')
-        Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_L,Dbasis.LT_EXP_L,Dbasis.LT_COE_L,'L')
-        Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_M,Dbasis.LT_EXP_M,Dbasis.LT_COE_M,'M')
-        Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_N,Dbasis.LT_EXP_N,Dbasis.LT_COE_N,'N')
+    StrofAM=[]
+    COE_PRECISION_CTRL=True
+    f.write('a %s'%Dbasis.Z+'\n')
+    f.write('$ Add your description here\n')
+    f.write('$ Add your description here\n')
+    COE_PRECISION_CTRL=Dirac_COE_SCAN(Dbasis)
+    #print "HERE:"
+    #print Dirac_COE_SCAN(Dbasis)
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_S,Dbasis.LT_EXP_S,Dbasis.LT_COE_S,'S')
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_P,Dbasis.LT_EXP_P,Dbasis.LT_COE_P,'P')
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_D,Dbasis.LT_EXP_D,Dbasis.LT_COE_D,'D')
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_F,Dbasis.LT_EXP_F,Dbasis.LT_COE_F,'F')
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_G,Dbasis.LT_EXP_G,Dbasis.LT_COE_G,'G')
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_H,Dbasis.LT_EXP_H,Dbasis.LT_COE_H,'H')
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_I,Dbasis.LT_EXP_I,Dbasis.LT_COE_I,'I')
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_K,Dbasis.LT_EXP_K,Dbasis.LT_COE_K,'K')
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_L,Dbasis.LT_EXP_L,Dbasis.LT_COE_L,'L')
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_M,Dbasis.LT_EXP_M,Dbasis.LT_COE_M,'M')
+    Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_N,Dbasis.LT_EXP_N,Dbasis.LT_COE_N,'N')
 #Dirac AM output
 def Dirac_L_output_AG(f,COE_PRECISION_CTRL,basislt_EXP_COE,basislt_EXP,basislt_COE,AM):
         if basislt_EXP_COE:
