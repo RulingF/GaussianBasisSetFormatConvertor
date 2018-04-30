@@ -3,92 +3,96 @@
 import ele
 
 class Basis_set:
-	'''Represents basis sets.'''
-	def __init__(self,atomic_number):
-		'''Initialize constructed Basis_set'''
-		#Read atomic number
-		self.Z=atomic_number
-		#Read period number
-		self.period_number=ele.periodnumber_reg(self.Z)
-		self.numofs=0
-		self.numofp=0
-		self.numofd=0
-		self.numoff=0
-		self.numofg=0
-		self.numofh=0
-		self.numofi=0
-		self.numofk=0
-		self.numofl=0
-		self.numofm=0
-		self.numofn=0
-		self.LT_EXP_COE_S=[]
-		self.LT_EXP_COE_P=[]
-		self.LT_EXP_COE_D=[]
-		self.LT_EXP_COE_F=[]
-		self.LT_EXP_COE_G=[]
-		self.LT_EXP_COE_H=[]
-		self.LT_EXP_COE_I=[]
-		self.LT_EXP_COE_K=[]
-		self.LT_EXP_COE_L=[]
-		self.LT_EXP_COE_M=[]
-		self.LT_EXP_COE_N=[]
-                self.LT_EXP_COE_LT=[self.LT_EXP_COE_S,self.LT_EXP_COE_P,self.LT_EXP_COE_D,self.LT_EXP_COE_F,self.LT_EXP_COE_G,self.LT_EXP_COE_H,self.LT_EXP_COE_I,self.LT_EXP_COE_K,self.LT_EXP_COE_L,self.LT_EXP_COE_M,self.LT_EXP_COE_N]
-                self.LT_EXP_COE_ALL=[]
-                self.LT_EXP_COE_ALL_PAIR=[]
-		#Split EXP and COE
-		self.LT_EXP_S=[]
-		self.LT_COE_S=[]
-		self.LT_EXP_P=[]
-                self.LT_COE_P=[]
-                self.LT_EXP_D=[]
-                self.LT_COE_D=[]
-                self.LT_EXP_F=[]
-                self.LT_COE_F=[]
-                self.LT_EXP_H=[]
-                self.LT_COE_H=[]
-		self.LT_EXP_G=[]
-		self.LT_COE_G=[]
-                self.LT_EXP_I=[]
-                self.LT_COE_I=[]
-                self.LT_EXP_K=[]
-                self.LT_COE_K=[]
-                self.LT_EXP_L=[]
-                self.LT_COE_L=[]
-                self.LT_EXP_M=[]
-                self.LT_COE_M=[]
-                self.LT_EXP_N=[]
-                self.LT_COE_N=[]
-                self.LT_EXP_LT=[self.LT_EXP_S,self.LT_EXP_P,self.LT_EXP_D,self.LT_EXP_F,self.LT_EXP_G,self.LT_EXP_H,self.LT_EXP_I,self.LT_EXP_K,self.LT_EXP_L,self.LT_EXP_M,self.LT_EXP_N]
-                self.LT_COE_LT=[self.LT_COE_S,self.LT_COE_P,self.LT_COE_D,self.LT_COE_F,self.LT_COE_G,self.LT_COE_H,self.LT_COE_I,self.LT_COE_K,self.LT_COE_L,self.LT_COE_M,self.LT_COE_N]
-                self.LT_EXP_ALL=[]
-                self.LT_COE_ALL=[]
-		#For pseudopotential
-                self.PP_LT_EXP_S=[]
-                self.PP_LT_COE_S=[]
-                self.PP_LT_EXP_P=[]
-                self.PP_LT_COE_P=[]
-                self.PP_LT_EXP_D=[]
-                self.PP_LT_COE_D=[]
-                self.PP_LT_EXP_F=[]
-                self.PP_LT_COE_F=[]
-                self.PP_LT_EXP_H=[]
-                self.PP_LT_COE_H=[]
-                self.PP_LT_EXP_G=[]
-                self.PP_LT_COE_G=[]
-                self.PP_LT_EXP_I=[]
-                self.PP_LT_COE_I=[]
-                self.PP_LT_EXP_K=[]
-                self.PP_LT_COE_K=[]
-                self.PP_LT_EXP_L=[]
-                self.PP_LT_COE_L=[]
-                self.PP_LT_EXP_M=[]
-                self.PP_LT_COE_M=[]
-                self.PP_LT_EXP_N=[]
-                self.PP_LT_COE_N=[]
-                self.PP_LT_EXP_ALL=[]
-                self.PP_LT_COE_ALL=[]
-                #Recognise which element it is
-		self.element_name=ele.element_reg(self.Z)
+    '''
+    Basis set class contains all the elements that's necessary to explains a basis set, those include:
+    atomic number, element period number, element name, angular momenta, exponents, coeffients,
+    pseudopotential under developing.(change after finished)
+    '''
+    def __init__(self,atomic_number):
+        '''Initialize constructed Basis_set'''
+        #Read atomic number
+        self.Z=atomic_number
+        #Read period number
+        self.period_number=ele.periodnumber_reg(self.Z)
+        self.numofs=0
+        self.numofp=0
+        self.numofd=0
+        self.numoff=0
+        self.numofg=0
+        self.numofh=0
+        self.numofi=0
+        self.numofk=0
+        self.numofl=0
+        self.numofm=0
+        self.numofn=0
+        self.LT_EXP_COE_S=[]
+        self.LT_EXP_COE_P=[]
+        self.LT_EXP_COE_D=[]
+        self.LT_EXP_COE_F=[]
+        self.LT_EXP_COE_G=[]
+        self.LT_EXP_COE_H=[]
+        self.LT_EXP_COE_I=[]
+        self.LT_EXP_COE_K=[]
+        self.LT_EXP_COE_L=[]
+        self.LT_EXP_COE_M=[]
+        self.LT_EXP_COE_N=[]
+        self.LT_EXP_COE_LT=[self.LT_EXP_COE_S,self.LT_EXP_COE_P,self.LT_EXP_COE_D,self.LT_EXP_COE_F,self.LT_EXP_COE_G,self.LT_EXP_COE_H,self.LT_EXP_COE_I,self.LT_EXP_COE_K,self.LT_EXP_COE_L,self.LT_EXP_COE_M,self.LT_EXP_COE_N]
+        self.LT_EXP_COE_ALL=[]
+        self.LT_EXP_COE_ALL_PAIR=[]
+        #Split EXP and COE
+        self.LT_EXP_S=[]
+        self.LT_COE_S=[]
+        self.LT_EXP_P=[]
+        self.LT_COE_P=[]
+        self.LT_EXP_D=[]
+        self.LT_COE_D=[]
+        self.LT_EXP_F=[]
+        self.LT_COE_F=[]
+        self.LT_EXP_H=[]
+        self.LT_COE_H=[]
+        self.LT_EXP_G=[]
+        self.LT_COE_G=[]
+        self.LT_EXP_I=[]
+        self.LT_COE_I=[]
+        self.LT_EXP_K=[]
+        self.LT_COE_K=[]
+        self.LT_EXP_L=[]
+        self.LT_COE_L=[]
+        self.LT_EXP_M=[]
+        self.LT_COE_M=[]
+        self.LT_EXP_N=[]
+        self.LT_COE_N=[]
+        self.LT_EXP_LT=[self.LT_EXP_S,self.LT_EXP_P,self.LT_EXP_D,self.LT_EXP_F,self.LT_EXP_G,self.LT_EXP_H,self.LT_EXP_I,self.LT_EXP_K,self.LT_EXP_L,self.LT_EXP_M,self.LT_EXP_N]
+        self.LT_COE_LT=[self.LT_COE_S,self.LT_COE_P,self.LT_COE_D,self.LT_COE_F,self.LT_COE_G,self.LT_COE_H,self.LT_COE_I,self.LT_COE_K,self.LT_COE_L,self.LT_COE_M,self.LT_COE_N]
+        self.LT_EXP_ALL=[]
+        self.LT_COE_ALL=[]
+        #For pseudopotential
+        self.PP_LT_EXP_S=[]
+        self.PP_LT_COE_S=[]
+        self.PP_LT_EXP_P=[]
+        self.PP_LT_COE_P=[]
+        self.PP_LT_EXP_D=[]
+        self.PP_LT_COE_D=[]
+        self.PP_LT_EXP_F=[]
+        self.PP_LT_COE_F=[]
+        self.PP_LT_EXP_H=[]
+        self.PP_LT_COE_H=[]
+        self.PP_LT_EXP_G=[]
+        self.PP_LT_COE_G=[]
+        self.PP_LT_EXP_I=[]
+        self.PP_LT_COE_I=[]
+        self.PP_LT_EXP_K=[]
+        self.PP_LT_COE_K=[]
+        self.PP_LT_EXP_L=[]
+        self.PP_LT_COE_L=[]
+        self.PP_LT_EXP_M=[]
+        self.PP_LT_COE_M=[]
+        self.PP_LT_EXP_N=[]
+        self.PP_LT_COE_N=[]
+        self.PP_LT_EXP_ALL=[]
+        self.PP_LT_COE_ALL=[]
+        #Recognise which element it is
+        self.element_name=ele.element_reg(self.Z)
 	def gbasis_split_EXP_COE(self,AMCtrl=-1):
 		'''split coe and exp and put coe in the right matrix'''
 		#S

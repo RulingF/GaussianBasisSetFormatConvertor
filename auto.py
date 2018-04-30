@@ -10,11 +10,9 @@ import cPickle
 #Main function that executes.
 
 #Multi elements input
-#No_of_basis=Nest.Number_of_Basisin()
-No_of_basis=15
+No_of_basis=Nest.Number_of_Basisin()
 #Reading basis type
-#In_basis_format=Nest.Type_of_Basisin()
-In_basis_format=3
+In_basis_format=Nest.Type_of_Basisin()
 #############################################################################################################
 #############################################################################################################
 #############################################################################################################
