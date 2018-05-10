@@ -93,8 +93,8 @@ class Basis_set:
         self.PP_LT_COE_ALL=[]
         #Recognise which element it is
         self.element_name=ele.element_reg(self.Z)
-	def gbasis_split_EXP_COE(self,AMCtrl=-1):
-		'''split coe and exp and put coe in the right matrix'''
+    def gbasis_split_EXP_COE(self,AMCtrl=-1):
+        '''split coe and exp and put coe in the right matrix'''
 		#S
 		if not self.LT_COE_S and (AMCtrl==0 or AMCtrl==-1):
 			COE_tmp=[]
@@ -120,6 +120,31 @@ class Basis_set:
 							flag.sort()
 							break
 			self.LT_COE_S=COE_tmp
+        for exp_coe_ag,coe_ag,exp_ag in zip(self.LT_EXP_COE_LT,self.LT_COE_LT,self.LT_EXP_LT):
+            if not coe_ag and (AMCtrl==0 or AMCtrl==-1):
+                COE_tmp = [] 
+                length3 = 0
+                for item in exp_coe_ag:
+                    exp_ag.append(item[0])
+                for item in exp_coe_ag:
+                    coe_ag.append(item[1:])
+                COE_tmp = coe_ag
+                for i,item in enumerate(coe_ag):
+                    length = len(item)
+                    if length == 1:
+                        for j,flag in enumerate(COE_tmp):
+                            length2 = len(flag)
+                            if i != j:
+                                flag.append(0.0)
+                                length3 = length2
+                            else:
+                                i = 0
+                                while i < length3:
+                                    flag.append(0.0)
+                                    i+ = 1
+                                flag.sort()
+                                break
+                #Start here! MAKE coe_ag blank and append elements of COE_tmp into it
 		#P
                 if not self.LT_COE_P  and (AMCtrl==1 or AMCtrl==-1):
 			COE_tmp=[]
@@ -723,63 +748,63 @@ class Basis_set:
                 self.LT_EXP_COE_L.sort(reverse=True)
                 self.LT_EXP_COE_M.sort(reverse=True)
                 self.LT_EXP_COE_N.sort(reverse=True)
-	def read_in_Num(self,exp_coe_line):
-		'''Read Exponentials and Coefficients in one line'''
-		line=exp_coe_line.split()
-		i=0
-		while i<len(line):
-			if 'D' in line[i]:
-				line[i]=line[i].replace('D','E')
-			i+=1
-		return map(float,line)
-	def is_Num(self,inputstr):
-		dot_count=0
-		E_count=0
-		plus_count=0
-		minus_count=0
-		inputstr=inputstr.strip('-+')
-		for item in inputstr:
-			if item=='.':
-				dot_count+=1
-			elif item=='E' or item=='D' or item=='e':
-				E_count+=1
-			elif item=='+':
-				plus_count+=1
-			elif item=='-':
-				minus_count+=1
-			elif not item.isdigit():
-				return False
-		if dot_count>1:
-			return False
-		elif E_count>1:
-			return False
-		elif plus_count>1:
-			return False
-		elif minus_count>1:
-			return False
-		else:
-			return True
-        def Sum_lt(self):
-                for item,jtem in zip('SPDFGHIKLMN',self.LT_EXP_COE_LT):
-                        self.LT_EXP_COE_ALL.append([item]+jtem)
-                for item,jtem in zip('SPDFGHIKLMN',self.LT_EXP_LT):
-                        self.LT_EXP_ALL.append([item]+jtem)
-                for item,jtem in zip('SPDFGHIKLMN',self.LT_COE_LT):
-                        self.LT_COE_ALL.append([item]+jtem)
-        def Pair_ALL(self):
-                tmplt1=[]
+    def read_in_Num(self,exp_coe_line):
+        '''Read Exponentials and Coefficients in one line'''
+        line=exp_coe_line.split()
+        i=0
+        while i<len(line):
+            if 'D' in line[i]:
+                line[i]=line[i].replace('D','E')
+            i+=1
+        return map(float,line)
+    def is_Num(self,inputstr):
+        dot_count=0
+        E_count=0
+        plus_count=0
+        minus_count=0
+        inputstr=inputstr.strip('-+')
+        for item in inputstr:
+            if item=='.':
+                dot_count+=1
+            elif item=='E' or item=='D' or item=='e':
+                E_count+=1
+            elif item=='+':
+                plus_count+=1
+            elif item=='-':
+                minus_count+=1
+            elif not item.isdigit():
+                return False
+        if dot_count>1:
+            return False
+        elif E_count>1:
+            return False
+        elif plus_count>1:
+            return False
+        elif minus_count>1:
+            return False
+        else:
+            return True
+    def Sum_lt(self):
+        for item,jtem in zip('SPDFGHIKLMN',self.LT_EXP_COE_LT):
+            self.LT_EXP_COE_ALL.append([item]+jtem)
+        for item,jtem in zip('SPDFGHIKLMN',self.LT_EXP_LT):
+            self.LT_EXP_ALL.append([item]+jtem)
+        for item,jtem in zip('SPDFGHIKLMN',self.LT_COE_LT):
+            self.LT_COE_ALL.append([item]+jtem)
+    def Pair_ALL(self):
+        tmplt1=[]
+        tmplt2=[]
+        for i1tem in self.LT_EXP_COE_ALL:
+            try:    
+                tmplt2.append(i1tem[0])
+                for k in range(0,len(i1tem[1][1:])):
+                    for i2tem in i1tem[1:]:
+                        if i2tem[k+1] != 0:
+                            tmplt1.append([i2tem[0],i2tem[k+1]])
+                    tmplt2.append(tmplt1)
+                    tmplt1=[]
+                self.LT_EXP_COE_ALL_PAIR.append(tmplt2)
                 tmplt2=[]
-                for i1tem in self.LT_EXP_COE_ALL:
-                        try:    
-                                tmplt2.append(i1tem[0])
-                                for k in range(0,len(i1tem[1][1:])):
-                                        for i2tem in i1tem[1:]:
-                                                if i2tem[k+1] != 0:
-                                                        tmplt1.append([i2tem[0],i2tem[k+1]])
-                                        tmplt2.append(tmplt1)
-                                        tmplt1=[]
-                                self.LT_EXP_COE_ALL_PAIR.append(tmplt2)
-                                tmplt2=[]
-                        except IndexError:
-                                print 'Warning: '+'Empty'+' '+i1tem[0]+' '+'angular momentum basis!!!'
-                         
+            except IndexError:
+                print 'Warning: '+'Empty'+' '+i1tem[0]+' '+'angular momentum basis!!!'
+                 
