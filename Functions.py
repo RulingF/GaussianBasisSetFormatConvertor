@@ -748,24 +748,24 @@ def Dirac_COE_SCAN(Basis):
 	return True
 
 def molproregular_basisfile_pre_processor(f_dir):
-	f=file(f_dir,'r')
-	basename=os.path.basename(f_dir)
-	fnew=file(basename+"_TMP",'w')
-	line=f.readline()
-        while line:
-	#	print line
-		while line[0]=='!':
-			fnew.write(line)
-			line=f.readline()
-		line_new=line.replace(' ',',')
-		line_new=line_new.replace('\t',',')
-                line_new=line_new.replace(';',',')
-		while line_new.find(',,')!=-1:
-			line_new=line_new.replace(',,',',')	
-		line_new=line_new.replace(',\n','\n')	
-		fnew.write(line_new)
-		line=f.readline()
-	f.close()
-	fnew.close()
-	return basename+"_TMP"
+    f=file(f_dir,'r')
+    basename=os.path.basename(f_dir)
+    fnew=file(basename+"_TMP",'w')
+    line=f.readline()
+    while line:
+    #  print line
+        while line[0]=='!':
+            fnew.write(line)
+            line=f.readline()
+        line_new=line.replace(' ',',')
+        line_new=line_new.replace('\t',',')
+        line_new=line_new.replace(';',',')
+        while line_new.find(',,')!=-1:
+            line_new=line_new.replace(',,',',')        
+        line_new=line_new.replace(',\n','\n')        
+        fnew.write(line_new)
+        line=f.readline()
+    f.close()
+    fnew.close()
+    return basename+"_TMP"
 
