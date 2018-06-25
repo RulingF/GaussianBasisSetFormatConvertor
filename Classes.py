@@ -95,7 +95,7 @@ class Basis_set:
         self.element_name=ele.element_reg(self.Z)
     def gbasis_split_EXP_COE(self,AMCtrl=-1):
         '''split coe and exp and put coe in the right matrix'''
-		#S
+        #S
 		if not self.LT_COE_S and (AMCtrl==0 or AMCtrl==-1):
 			COE_tmp=[]
 			length3=0
@@ -145,7 +145,7 @@ class Basis_set:
                                 flag.sort()
                                 break
                 #Start here! MAKE coe_ag blank and append elements of COE_tmp into it
-		#P
+        #P
                 if not self.LT_COE_P  and (AMCtrl==1 or AMCtrl==-1):
 			COE_tmp=[]
 			length3=0

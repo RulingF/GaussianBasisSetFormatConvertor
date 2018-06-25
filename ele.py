@@ -452,20 +452,20 @@ def atomicnumber_reg(S):
         else:
                 return False
 def periodnumber_reg(z):
-	if z>0 and z<3:
-		return 1
-	elif z>2 and z<11:
-		return 2
-	elif z>10 and z<19:
-		return 3
-	elif z>18 and z<37:
-		return 4
-	elif z>36 and z<55:
-		return 5
-	elif z>54 and z<87:
-		return 6
-	elif z>86 and z<119:
-		return 7
-	else:
-		print "Atomic number not recognised! Error exit."
-		sys.exit(1)
+    if z>0 and z<3:
+        return 1
+    elif z>2 and z<11:
+        return 2
+    elif z>10 and z<19:
+        return 3
+    elif z>18 and z<37:
+        return 4
+    elif z>36 and z<55:
+        return 5
+    elif z>54 and z<87:
+        return 6
+    elif z>86 and z<119:
+        return 7
+    else:
+        print "Atomic number not recognised! Error exit."
+        sys.exit(1)

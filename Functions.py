@@ -230,69 +230,69 @@ def Dirac_output(Dbasis,f):
     Dirac_L_output_AG(f,COE_PRECISION_CTRL,Dbasis.LT_EXP_COE_N,Dbasis.LT_EXP_N,Dbasis.LT_COE_N,'N')
 #Dirac AM output
 def Dirac_L_output_AG(f,COE_PRECISION_CTRL,basislt_EXP_COE,basislt_EXP,basislt_COE,AM):
-        if basislt_EXP_COE:
-                length1=len(basislt_EXP)
-                length1=str(length1)
-                length1=length1.rjust(5)
-		length2=0
-#                length2=len(basislt_COE[0])
-                length2=str(length2)
-                length2=length2.rjust(5)
-                StrofAM=length1+length2
-                f.write('$ ')
-		f.write(AM)
-		f.write('-TYPE FUNCTIONS\n')
-                f.write(StrofAM+'    0')
-                length3=len(basislt_EXP)
-                if COE_PRECISION_CTRL==True:
-                        for i in range(length3):
-                                f.write('\n')
-                                f.write("   %15f"%basislt_EXP[i])
-#                                for j,item in enumerate(basislt_COE[i]):
-#                                        if j==5:
-#                                                f.write('\n   ')
-#                                        elif (j-5)%5==0 and j!=0:
-#                                                f.write('\n   ')
-#                                        f.write("%12.8f"%item)
-#				
-                else:
-                        for i in range(length3):
-                                f.write('\n')
-                                f.write("%15E"%basislt_EXP[i])
-#                                for j,item in enumerate(basislt_COE[i]):
-#                                        if j==5:
-#                                                f.write('\n               ')
-#                                        elif (j-5)%5==0 and j!=0:
-#                                                f.write('\n               ')
-#                                        f.write("%12.4E"%item)
+    if basislt_EXP_COE:
+        length1=len(basislt_EXP)
+        length1=str(length1)
+        length1=length1.rjust(5)
+        length2=0
+#       length2=len(basislt_COE[0])
+        length2=str(length2)
+        length2=length2.rjust(5)
+        StrofAM=length1+length2
+        f.write('$ ')
+        f.write(AM)
+        f.write('-TYPE FUNCTIONS\n')
+        f.write(StrofAM+'    0')
+        length3=len(basislt_EXP)
+        if COE_PRECISION_CTRL==True:
+            for i in range(length3):
                 f.write('\n')
+                f.write("   %15f"%basislt_EXP[i])
+#               for j,item in enumerate(basislt_COE[i]):
+#                   if j==5:
+#                       f.write('\n   ')
+#                   elif (j-5)%5==0 and j!=0:
+#                       f.write('\n   ')
+#                   f.write("%12.8f"%item)
+#                        
+        else:
+            for i in range(length3):
+                f.write('\n')
+                f.write("%15E"%basislt_EXP[i])
+#               for j,item in enumerate(basislt_COE[i]):
+#                   if j==5:
+#                       f.write('\n               ')
+#                   elif (j-5)%5==0 and j!=0:
+#                       f.write('\n               ')
+#                   f.write("%12.4E"%item)
+        f.write('\n')
 
 #Molpro output function
 def Molpro_R_output(Mbasis,f):
-        f.write('Define your basis set name here.\n')
-	#transpose LT_COE
-	Mbasis.LT_COE_S=map(list,zip(*Mbasis.LT_COE_S))
-        Mbasis.LT_COE_P=map(list,zip(*Mbasis.LT_COE_P))
-        Mbasis.LT_COE_D=map(list,zip(*Mbasis.LT_COE_D))
-        Mbasis.LT_COE_F=map(list,zip(*Mbasis.LT_COE_F))
-        Mbasis.LT_COE_G=map(list,zip(*Mbasis.LT_COE_G))
-        Mbasis.LT_COE_H=map(list,zip(*Mbasis.LT_COE_H))
-        Mbasis.LT_COE_I=map(list,zip(*Mbasis.LT_COE_I))
-        Mbasis.LT_COE_K=map(list,zip(*Mbasis.LT_COE_K))
-        Mbasis.LT_COE_L=map(list,zip(*Mbasis.LT_COE_L))
-        Mbasis.LT_COE_M=map(list,zip(*Mbasis.LT_COE_M))
-        Mbasis.LT_COE_N=map(list,zip(*Mbasis.LT_COE_N))
-	Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_S,Mbasis.LT_EXP_S,Mbasis.LT_COE_S,'s')
-        Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_P,Mbasis.LT_EXP_P,Mbasis.LT_COE_P,'p')
-        Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_D,Mbasis.LT_EXP_D,Mbasis.LT_COE_D,'d')
-        Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_F,Mbasis.LT_EXP_F,Mbasis.LT_COE_F,'f')
-        Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_G,Mbasis.LT_EXP_G,Mbasis.LT_COE_G,'g')
-        Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_H,Mbasis.LT_EXP_H,Mbasis.LT_COE_H,'h')
-        Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_I,Mbasis.LT_EXP_I,Mbasis.LT_COE_I,'i')
-        Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_K,Mbasis.LT_EXP_K,Mbasis.LT_COE_K,'k')
-        Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_L,Mbasis.LT_EXP_L,Mbasis.LT_COE_L,'l')
-        Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_M,Mbasis.LT_EXP_M,Mbasis.LT_COE_M,'m')
-        Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_N,Mbasis.LT_EXP_N,Mbasis.LT_COE_N,'n')
+    f.write('Define your basis set name here.\n')
+    #transpose LT_COE
+    Mbasis.LT_COE_S=map(list,zip(*Mbasis.LT_COE_S))
+    Mbasis.LT_COE_P=map(list,zip(*Mbasis.LT_COE_P))
+    Mbasis.LT_COE_D=map(list,zip(*Mbasis.LT_COE_D))
+    Mbasis.LT_COE_F=map(list,zip(*Mbasis.LT_COE_F))
+    Mbasis.LT_COE_G=map(list,zip(*Mbasis.LT_COE_G))
+    Mbasis.LT_COE_H=map(list,zip(*Mbasis.LT_COE_H))
+    Mbasis.LT_COE_I=map(list,zip(*Mbasis.LT_COE_I))
+    Mbasis.LT_COE_K=map(list,zip(*Mbasis.LT_COE_K))
+    Mbasis.LT_COE_L=map(list,zip(*Mbasis.LT_COE_L))
+    Mbasis.LT_COE_M=map(list,zip(*Mbasis.LT_COE_M))
+    Mbasis.LT_COE_N=map(list,zip(*Mbasis.LT_COE_N))
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_S,Mbasis.LT_EXP_S,Mbasis.LT_COE_S,'s')
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_P,Mbasis.LT_EXP_P,Mbasis.LT_COE_P,'p')
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_D,Mbasis.LT_EXP_D,Mbasis.LT_COE_D,'d')
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_F,Mbasis.LT_EXP_F,Mbasis.LT_COE_F,'f')
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_G,Mbasis.LT_EXP_G,Mbasis.LT_COE_G,'g')
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_H,Mbasis.LT_EXP_H,Mbasis.LT_COE_H,'h')
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_I,Mbasis.LT_EXP_I,Mbasis.LT_COE_I,'i')
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_K,Mbasis.LT_EXP_K,Mbasis.LT_COE_K,'k')
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_L,Mbasis.LT_EXP_L,Mbasis.LT_COE_L,'l')
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_M,Mbasis.LT_EXP_M,Mbasis.LT_COE_M,'m')
+    Molpro_R_output_AG(f,Mbasis,Mbasis.LT_EXP_COE_N,Mbasis.LT_EXP_N,Mbasis.LT_COE_N,'n')
 #Molpro regular basis output AG analog
 def Molpro_R_output_AG(f,Mbasis,basislt_EXP_COE,basislt_EXP,basislt_COE,AM):
 	if basislt_EXP_COE:
